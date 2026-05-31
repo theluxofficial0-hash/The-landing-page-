@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIOM - AI Operating System for the Next Billion Dollar Empire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(to bottom right, #0a0e27, #1a1f3a, #0f1425);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-blob-1 {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .bg-blob-2 {
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: float 30s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(40px, -40px); }
+        }
+
+        header {
+            position: relative;
+            z-index: 10;
+            border-bottom: 1px solid rgba(71, 85, 105, 0.5);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cta-button {
+            padding: 0.8rem 2rem;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            border: none;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.8);
+            transform: translateY(-3px);
+        }
+
+        .container {
+            position: relative;
+            z-index: 5;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 10vw, 5.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: #cbd5e1;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            color: #8b5cf6;
+            font-weight: 800;
+        }
+
+        .gumroad-link-display {
+            background: rgba(88, 28, 135, 0.2);
+            border: 2px solid rgba(139, 92, 246, 0.6);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+        }
+
+        .gumroad-label {
+            font-size: 0.9rem;
+            color: #c4b5fd;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .gumroad-link {
+            word-break: break-all;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: #06b6d4;
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .copy-button {
+            padding: 0.8rem 1.5rem;
+            background: rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.6);
+            color: #c4b5fd;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .copy-button:hover {
+            background: rgba(139, 92, 246, 0.5);
+            border-color: rgba(139, 92, 246, 0.8);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .stat {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 1rem;
+            padding: 2rem 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            border-color: rgba(139, 92, 246, 0.6);
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #cbd5e1;
+            margin-top: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            border: none;
+            border-radius: 0.75rem;
+            color: white;
+            font-weight: 900;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 80px rgba(139, 92, 246, 0.5);
+            margin-top: 2rem;
+            text-decoration: none;
+        }
+
+        .hero-cta:hover {
+            box-shadow: 0 0 150px rgba(139, 92, 246, 0.9);
+            transform: translateY(-5px);
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 6rem 0;
+        }
+
+        .service {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .service:hover {
+            border-color: rgba(139, 92, 246, 0.6);
+            transform: translateY(-8px);
+            background: rgba(30, 41, 59, 0.6);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .service p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.15));
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 2rem;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 5rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .access-box {
+            background: rgba(88, 28, 135, 0.25);
+            border: 2px solid rgba(139, 92, 246, 0.6);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem auto;
+            max-width: 700px;
+            backdrop-filter: blur(10px);
+        }
+
+        .access-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #c4b5fd;
+        }
+
+        .access-link {
+            display: block;
+            word-break: break-all;
+            background: rgba(15, 23, 42, 0.9);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            color: #06b6d4;
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .access-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 900;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 80px rgba(139, 92, 246, 0.5);
+            margin: 0 0.5rem;
+        }
+
+        .access-button:hover {
+            box-shadow: 0 0 150px rgba(139, 92, 246, 0.9);
+            transform: translateY(-5px);
+        }
+
+        footer {
+            border-top: 1px solid rgba(139, 92, 246, 0.3);
+            padding: 2.5rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-top: 5rem;
+        }
+
+        footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #c4b5fd;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-buttons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="bg-blob-1"></div>
+        <div class="bg-blob-2"></div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">⚙️</div>
+                AXIOM
+            </div>
+            <div class="nav-buttons">
+                <a href="https://axiomofficial0.gumroad.com/l/mlwtw?_gl=1*11uc18s*_ga*NTY2NDgxMjg1LjE3NzM1MDQzMTQ.*_ga_6LJN6D94N6*czE3ODAxODU3MDAkbzE2JGcxJHQxNzgwMTg3MjMzJGo2MCRsMCRoMA.." class="cta-button">🚀 Get Access</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>AXIOM: The Operating System<br>for AI Agents & Billion Dollar Empires</h1>
+            <p class="hero-subtitle">
+                10 AI services. 1 unified platform. Deploy <span class="highlight">AI Freelancing, Voice Agents, Virtual Assistants, Chatbots, Lead Generation, Content AI, Copywriting, Cybersecurity, Agent Development,</span> and <span class="highlight">Venture Studios</span> instantly on AXIOM infrastructure.
+            </p>
+
+            <!-- Gumroad Link Box -->
+            <div class="gumroad-link-display">
+                <div class="gumroad-label">🔗 Get Access via Gumroad</div>
+                <div class="gumroad-link">
+                    https://axiomofficial0.gumroad.com/l/mlwtw?_gl=1*11uc18s*_ga*NTY2NDgxMjg1LjE3NzM1MDQzMTQ.*_ga_6LJN6D94N6*czE3ODAxODU3MDAkbzE2JGcxJHQxNzgwMTg3MjMzJGo2MCRsMCRoMA..
+                </div>
+                <button class="copy-button" onclick="copyToClipboard()">📋 Copy Link</button>
+                <span style="margin-left: 1rem; color: #c4b5fd; font-size: 0.85rem;">OR</span>
+                <a href="https://axiomofficial0.gumroad.com/l/mlwtw?_gl=1*11uc18s*_ga*NTY2NDgxMjg1LjE3NzM1MDQzMTQ.*_ga_6LJN6D94N6*czE3ODAxODU3MDAkbzE2JGcxJHQxNzgwMTg3MjMzJGo2MCRsMCRoMA.." class="access-button" style="margin-left: 1rem;">→ Open Gumroad</a>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-value">$200B</div>
+                    <div class="stat-label">AI services market by 2027</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">10x</div>
+                    <div class="stat-label">Faster deployment</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">$1M+</div>
+                    <div class="stat-label">ARR achievable in 12 months</div>
+                </div>
+            </div>
+
+            <a href="https://axiomofficial0.gumroad.com/l/mlwtw?_gl=1*11uc18s*_ga*NTY2NDgxMjg1LjE3NzM1MDQzMTQ.*_ga_6LJN6D94N6*czE3ODAxODU3MDAkbzE2JGcxJHQxNzgwMTg3MjMzJGo2MCRsMCRoMA.." class="hero-cta">
+                💎 Unlock AXIOM Now
+            </a>
+        </section>
+
+        <!-- Services powered by AXIOM -->
+        <section>
+            <h2 style="text-align: center; font-size: 2.5rem; margin: 4rem 0 3rem; background: linear-gradient(135deg, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">10 AI Services Powered by AXIOM</h2>
+            <div class="services">
+                <div class="service">
+                    <div class="service-icon">💼</div>
+                    <h3>AI Freelancing</h3>
+                    <p>Build and sell AI services instantly. AXIOM handles payments, scaling, and white-label infrastructure.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🎤</div>
+                    <h3>Voice Agents</h3>
+                    <p>Deploy voice AI in seconds. Full infrastructure, billing, and scaling included.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🤖</div>
+                    <h3>Virtual Assistants</h3>
+                    <p>White-label AI assistants for every use case. You own the brand, we own the infrastructure.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">💬</div>
+                    <h3>Chatbot Agents</h3>
+                    <p>Intelligent chatbots deployed instantly. No infrastructure work required.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">📧</div>
+                    <h3>Lead Generation</h3>
+                    <p>AI-powered prospecting at scale. AXIOM powers the engine and scales globally.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">✍️</div>
+                    <h3>Content Repurposing</h3>
+                    <p>Transform one piece of content into 10 formats. AXIOM automates the process.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">📝</div>
+                    <h3>Copywriting AI</h3>
+                    <p>Generative copy at enterprise scale. You focus on distribution, we handle the models.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🔒</div>
+                    <h3>Cybersecurity AI</h3>
+                    <p>Threat detection and prevention deployed instantly. Scale from 1 to 1M endpoints.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🔧</div>
+                    <h3>Agent Development</h3>
+                    <p>Build custom AI agents in hours. AXIOM is the platform, you build the business.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🚀</div>
+                    <h3>AI Venture Studio</h3>
+                    <p>Launch AI companies instantly. AXIOM provides tech, capital, and infrastructure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main CTA Section -->
+        <section class="cta-section">
+            <h2>Everything You Need Is Inside AXIOM</h2>
+            <p>Deployment infrastructure, payment processing, white-label capabilities, scaling, monitoring, compliance—all built in. Deploy any of these 10 AI services in hours, not months.</p>
+            
+            <div class="access-box">
+                <h3>🎯 Get Access via Gumroad</h3>
+                <div class="access-link">
+                    https://axiomofficial0.gumroad.com/l/mlwtw?_gl=1*11uc18s*_ga*NTY2NDgxMjg1LjE3NzM1MDQzMTQ.*_ga_6LJN6D94N6*czE3ODAxODU3MDAkbzE2JGcxJHQxNzgwMTg3MjMzJGo2MCRsMCRoMA..
+                </div>
+                <a href="https://axiomofficial0.gumroad.com/l/mlwtw?_gl=1*11uc18s*_ga*NTY2NDgxMjg1LjE3NzM1MDQzMTQ.*_ga_6LJN6D94N6*czE3ODAxODU3MDAkbzE2JGcxJHQxNzgwMTg3MjMzJGo2MCRsMCRoMA.." class="access-button">Open Gumroad →</a>
+                <button class="access-button" onclick="copyToClipboard()" style="background: rgba(139, 92, 246, 0.5); border: 1px solid rgba(139, 92, 246, 0.6);">📋 Copy & Share</button>
+            </div>
+
+            <p style="margin-top: 2rem; color: #cbd5e1; font-size: 1rem;">
+                ✨ Click the link above to get instant access to all AXIOM tools and services
+            </p>
+        </section>
+
+        <!-- Features Section -->
+        <section style="margin: 5rem 0;">
+            <h2 style="text-align: center; font-size: 2.5rem; margin: 0 0 3rem; background: linear-gradient(135deg, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Why AXIOM Wins</h2>
+            <div class="services">
+                <div class="service">
+                    <div class="service-icon">🌐</div>
+                    <h3>Infrastructure Standard</h3>
+                    <p>Like Stripe for payments. We're the standard infrastructure for AI apps globally.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🚀</div>
+                    <h3>10x Deployment Speed</h3>
+                    <p>Deploy in hours instead of weeks. Everything pre-built and ready to scale.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">💰</div>
+                    <h3>Revenue Share Model</h3>
+                    <p>Keep more of what you earn. We take commission on revenue you generate.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🧠</div>
+                    <h3>AI-Native</h3>
+                    <p>Built specifically for AI. Unlike generic cloud platforms, we understand your needs.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">🔄</div>
+                    <h3>Network Effects</h3>
+                    <p>Every app built on AXIOM makes the platform better. You win with us.</p>
+                </div>
+                <div class="service">
+                    <div class="service-icon">📈</div>
+                    <h3>Scale to $1M+ ARR</h3>
+                    <p>Proven roadmap. Go from idea to $1M/year in 12 months with AXIOM.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 AXIOM. The Operating System for AI. | <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="https://axiomofficial0.gumroad.com/l/mlwtw?_gl=1*11uc18s*_ga*NTY2NDgxMjg1LjE3NzM1MDQzMTQ.*_ga_6LJN6D94N6*czE3ODAxODU3MDAkbzE2JGcxJHQxNzgwMTg3MjMzJGo2MCRsMCRoMA..">Get Access</a></p>
+    </footer>
+
+    <script>
+        function copyToClipboard() {
+            const link = 'https://axiomofficial0.gumroad.com/l/mlwtw?_gl=1*11uc18s*_ga*NTY2NDgxMjg1LjE3NzM1MDQzMTQ.*_ga_6LJN6D94N6*czE3ODAxODU3MDAkbzE2JGcxJHQxNzgwMTg3MjMzJGo2MCRsMCRoMA..';
+            navigator.clipboard.writeText(link).then(() => {
+                alert('✅ Gumroad link copied! Paste it anywhere to share.');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+</body>
+</html>
